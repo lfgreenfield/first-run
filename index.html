@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>first-run</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-statistics/1.0.0/simple_statistics.min.js"></script>
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: whitesmoke;
+            font-family: Lato, sans-serif;
+            color: #0D0000;
+        }
+        header {
+            padding: 6px 10%;
+        }
+        h1 {
+            display: inline-block;
+            margin-right: 20px;
+            color: #001323;
+        }
+        h2 {
+            display: inline-block;
+            color: #001323;
+        }
+        #map {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+        }
+        footer {
+            padding: 6px 10%;
+            width: 80%;
+        }
+        p {
+            font-size: 1em;
+            color: #001323;
+        }
+        .red {
+            color: #cc0000;
+        }
+         .legend {
+            padding: 6px 8px;
+            font-size: 1em;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+        .legend h3 {
+            font-size: 1.1em;
+            font-weight: normal;
+            color: #001323;
+            margin: 0 0 10px 0;
+        }
+        .legend span {
+            width: 20px;
+            height: 20px;
+            float: left;
+            margin: 0 10px 4px 0;
+        }
+/*
+        .legend label {
+            font-size: 1.1em;
+        }
+        .legend label:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+*/
+        
+    </style>
+</head>
+
+<body>
+    
+    <div id='map'></div>
+    
+<!--
+    <div id="legend">
+        <h3>Legend</h3>
+        <svg class="legend" width="200" height="200"></svg>
+    </div>
+-->
+
+<!--    <script src ="belowhs2014json.js"></script>-->
+  
+    
+    <script>
+        
+    L.mapbox.accessToken = 'pk.eyJ1IjoibGZncmVlbmZpZWxkIiwiYSI6IjJTQWFaakEifQ.n0qIzdB2sQ4MymItf7vCWA';
+    
+    var map = L.mapbox.map('map', 'mapbox.streets-satellite', {
+        center: [38.055, -84.483],
+        zoom: 12,
+        minZoom: 6,
+        maxZoom: 15,
+    });
+        
+    var getBounds = map.getBounds();
+          
+    var bounds = L.latLngBounds(getBounds); 
+    console.log(bounds);
+        
+    map.setMaxBounds(bounds);
+        
+        
+    var imageURL = 'https://drive.google.com/file/d/0By9qec5SZV2OeDg1X19vNUV1TXM/view?usp=sharing',
+        imageBounds = [[38.1450875675262, -84.36847686767578], [37.96477144899956, -8459781646728516]];
+        
+    L.imageOverlay(imageUrl, imageBounds).addTo(map);
+        
+    
+    
+        
+        
+
+
+
+          
+    </script>
+    
+</body>
+
+</html>
